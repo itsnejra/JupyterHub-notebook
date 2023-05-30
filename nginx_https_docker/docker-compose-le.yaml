@@ -1,0 +1,13 @@
+version: "3.3" 
+services:
+  letsencrypt:
+    container_name: 'certbot-service'
+    image: certbot/certbot:latest
+    command: sh -c "certbot certonly --expand --webroot -w /tmp/acme_challenge >
+    entrypoint: ""
+    volumes:
+      - "/etc/letsencrypt:/etc/letsencrypt"
+      - "/tmp/acme_challenge:/tmp/acme_challenge"
+    environment:
+      - TERM=xterm
+
